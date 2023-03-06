@@ -1,0 +1,29 @@
+@startuml
+!define ICONURL https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/2.7.3/C4_Elements/
+!define SECURL https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/2.7.3/C4_Elements/Security/
+!define COLORURL https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/2.7.3/C4_Elements/Colors/
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/2.7.3/C4_Container.puml
+
+title Stride Threat Model in C4 Diagram
+
+Actor(user, "User")
+
+System_Boundary(user, "System") {
+  Container(web_app, "Web Application", "Allows users to manage their accounts and make transactions") {
+    Component(auth, "Authentication", "Authenticates users and manages user sessions") {
+      Component(user_data, "User Data", "Stores user account information") {
+        Component(database, "Database", "Stores user account information") {
+          Node(database_server, "Database Server", "Stores user account information")
+        }
+      }
+    }
+  }
+}
+
+user -> web_app : Uses
+web_app -> auth : Sends credentials
+auth -> user_data : Accesses
+user_data -> database : Accesses
+database_server --> database : Stores
+
+@enduml

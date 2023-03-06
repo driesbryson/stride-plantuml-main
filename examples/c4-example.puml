@@ -1,12 +1,12 @@
 @startuml C4 diagram example
 !include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Component.puml
 !include https://raw.githubusercontent.com/paulbrimicombe/stride-plantuml/main/stride.puml
+!include <C4/C4_Deployment.puml>
 
-
-Container(spa, <size:5>$TrustValueRatio("2:5") $Stride("SE") $AggregatedRisks("R1:R2")</size> \n=== Single Page Application, "javascript and react", "Provides all the internet banking functionality to customers via their web browser.")
-Container(ma, <size:5>$TrustValueRatio("1:4") $Stride("D")</size>\n=== Mobile App, "Xamarin", "Provides a limited subset ot the internet banking functionality to customers via their mobile mobile device.")
-Container(db, <size:5>$TrustValueRatio("3:5") $Stride("S")</size>\n=== ."HTLM paginaa" "")
-Container(db, <size:5>$TrustValueRatio("3:5") $Stride("T")</size>\n=== ." CSS paginaa" "")
+Container(spa, <size:5>$Stride("SE") $AggregatedRisks("R1:R2")</size> \n=== Single Page Application, "javascript and react", "Provides all the internet banking functionality to customers via their web browser.")
+Container(ma, <size:5>$Stride("D")</size>\n=== Mobile App, "Xamarin", "Provides a limited subset ot the internet banking functionality to customers via their mobile mobile device.")
+Container(db, <size:5>$Stride("S")</size>\n=== ."HTLM paginaa" "")
+Container(db01, <size:5>$Stride("T")</size>\n=== ." CSS pagina" "")
 
 Container(db, <size:5>$TrustValueRatio("3:5") $Stride("R2")</size>\n=== Database, "Relational Database Schema", "Stores user registration information, hashed authentication credentials, access logs, etc.")
 
